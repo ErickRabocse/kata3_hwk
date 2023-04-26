@@ -1,0 +1,221 @@
+1- For/of y for/in: loop 
+    ----------------------------
+	FOR IN --> properties (useful for objects)
+	FOR OF --> values (useful for arrays)
+    ----------------------------
+	EXAMPLE "for in":
+	const dog = {name:"Kuma", colors:"black", age: 9}
+	let text = "";
+	for (let property in dog){
+		text += dog[property] + " ";
+		console.log(property)
+	}
+	console.log(text);
+    ----------------------------
+	EXAMPLE "for of":
+	const numbers = [1,2,3]
+	for(let number of numbers){
+		console.log(number)
+		}
+    ----------------------------
+2- Map vs forEach: loop arrays
+    ----------------------------
+	FOREACH --> can't store the results in a var, but can loop and do operations to each element.
+	MAP --> can be stored in a var & returns a new ARR :)
+    ----------------------------
+	EXAMPLE FOREACH -->
+	const nums = [1,2,3,4,5]
+	nums.forEach(x=>{
+      console.log(x * 3)
+    });
+    ----------------------------
+	EXAMPLE MAP -->
+	const nums = [1,2,3,4,5]
+	let res1 = nums.map(x=> {
+      return x * 5;
+    });
+	console.log(res1)
+	console.log(nums)
+    ----------------------------
+3- Filter
+    ----------------------------
+	Returns a new array of only the elements that pass the test
+    ----------------------------
+	EXAMPLE FILTER -->
+	const nums = [1,2,3,4]
+	const aboveTwo = nums.filter(n => n > 2);
+	console.log(aboveTwo)
+	console.log(nums)
+	----------------------------
+4- Reduce
+    ----------------------------
+	Returns a single value after combining all the array elements.
+	The 1st parameter is a cb fn, the 2nd is the starting value
+    ----------------------------
+	EXAMPLE REDUCE -->
+	const nums = [1,2,3,4]
+	const sum = nums.reduce((acc,curr) => acc += curr, 0);
+	console.log(sum);
+	console.log(nums);
+    ----------------------------
+5- Default parameters
+    ----------------------------
+	They keep the fn working even if one or more of the parameters are missing & prevent UNDEFINED.	
+	You can set = "something" or "" (an empty string).
+	When invoking the fn and doing a mathematical operation use "null" if you don't want to specify a 	parameter. 	
+    ----------------------------
+	EXAMPLE -->
+	function greet(name, message, quote = ""){
+		console.log(name, message, quote)
+	}
+	greet("Erick", "Hello!");
+	greet(_, "How are you?", "See you")
+    ----------------------------
+6- Spread operator: inside an object {...}
+    ----------------------------
+	It generates a new copy of another object. Avoids altering the original object.
+	So, it's no longer a reference!
+    ----------------------------
+	EXAMPLE -->
+	const cat = {
+		name: "Renata",
+		age: 2
+	}
+	const cat2 = {...cat}
+	cat2.name = "Whiskas"
+	const cats = [cat, cat2];
+	console.log(cats)
+    ----------------------------
+7- Rest operator.
+    ----------------------------
+	It takes the extra parameters included when invoking the fn and stores them in an array
+    ----------------------------
+	EXAMPLE -->
+	function myList(a, b, ...extra){
+		console.log("REST OPERATOR");
+		console.log("a: " + a);
+		console.log("b: " + b);
+		console.log("extra elements: " + extra);
+		console.log("extra array size: " + extra.length);
+		console.log(extra[2]);
+	}
+	myList("apple", "banana", "pear", "orange", "tangerine")
+    ----------------------------
+8- Object entries y values (& keys).
+    ----------------------------
+	Turn objects into iterable arrays :)
+	That way you can  use: forEach(), map(), filter() & reduce()
+	Object.keys(obj)
+	Object.values(obj)
+	Object.entries(obj)
+    ----------------------------
+	EXAMPLE  -->
+	let westeros = {
+		cersei: "Lanister",
+		aria: "Stark",
+		jon: "Snow",
+		brienne: "Tarth",
+		daenerys: "Targaryen",
+		theon: "Greyjoy",
+		jorah: "Mormont",
+		margery: "Tyrell",
+		sandor: "Clean",
+		swell: "Tarly",
+		ramsey: "Bolton"
+	}
+	let keys = Object.keys(westeros);
+	let vals = Object.values(westeros);
+	let entries = Object.entries(westeros);
+	console.log(keys)
+	console.log(vals)
+	console.log(entries[0][1])
+    ----------------------------
+9- Splice.
+    ----------------------------
+	Mutates an array, it can delete, replace items & even add them.
+	splice(startIndex, deleteCount, elements to be inserted)
+    ----------------------------
+	EXAMPLE  -->
+	let planets = ["Mars", "Saturn", "Pluto", "Earth"];
+	planets.splice(2,1,"JUPITER"); --> REPLACES PLUTO (index 2) with JUPITER
+	console.log(planets);
+	planets.splice(2,1); --> ELIMINATES JUPITER
+	console.log(planets)
+	planets.splice(0,1) --> Leaves out Mars (index 0) returns the rest after index 1 (Saturn)
+	console.log(planets)
+	planets.splice(0,0,"Uranus","Jupiter") --> Add two elements at the beginning of the array.
+	console.log(planets)
+	planets.splice(1) --> Removes every single element after the index stated, including it.
+	console.log(planets)
+    ----------------------------
+10- Includes.
+    ----------------------------
+	Check if an element exists inside an array. If it does returns true
+    ----------------------------
+	EXAMPLE  -->
+	const cities = ["Madrid", "Valencia", "Lugo"];
+	console.log(cities.includes("Lugo")) --> returns true
+    ----------------------------
+11- indexOf
+    ----------------------------
+	returns the index of the first match.
+    ----------------------------
+	EXAMPLE  -->
+	const cities = ["Madrid", "Valencia", "Lugo"];
+	console.log(cities.indexOf("Lugo")) --> returns 2, if false returns -1
+12- Find.
+    ----------------------------
+	Takes a fn in the parameter, it can't be an arrow fn. Because arrow fn treat this globally.
+	Returns the value of the **1st element** that returns true, THEN IT STOPS!
+	If false returns undefined
+    ----------------------------
+	EXAMPLE 1 -->
+	const cities = ["Madrid", "Valencia", "Lugo"];
+	const found = cities.find(city => city.length > 4); 
+	console.log(found); --> ["Madrid"]
+    ----------------------------
+	EXAMPLE 2 -->
+	const cities = ["Mexico City", "Tokyo", "Rome"];
+	const person = {
+		name: "Berth",
+		age: 41,
+		city: "Mexico City"
+	}
+	let match = cities.find(function(city){
+		return city === this.city;
+	}, person);
+	console.log(person.name + " lives in: " + match);
+    ----------------------------
+FindIndex.
+    ----------------------------
+	Takes a fn in its parameter & finds the element that returns true
+    ----------------------------
+	EXAMPLE 1  -->
+	const people = [
+		{
+			name: "Don",
+			occupation: "Software Developer"
+		},
+		{
+			name: "Erick",
+			occupation: "Dentist"
+		},
+		{
+			name: "Kate",
+			occupation: "Hair Dresser"
+		}
+	]
+	function isDentist(person){
+		return person.occupation === "Dentist";
+	}
+	console.log(people.findIndex(isDentist)); --> returns 1
+    console.log(people[people.findIndex(isDentist)]);	--> returns the object
+    ----------------------------
+	EXAMPLE 2 -->
+	const cities = ["madrid", "valencia", "lugo"];
+	let index = cities.findIndex(city => city.indexOf("o") > -1)
+    console.log(index) --> return 2, the index at which there's a letter "o" = lugo 
+
+
+
+
