@@ -69,7 +69,7 @@
 		console.log(name, message, quote)
 	}
 	greet("Erick", "Hello!");
-	greet(_, "How are you?", "See you")
+	greet(undefined, "How are you?", "See you")
     ----------------------------
 6- Spread operator: inside an object {...}
     ----------------------------
@@ -158,15 +158,15 @@
     ----------------------------
 11- indexOf
     ----------------------------
-	returns the index of the first match.
+	returns the index of the FIRST match.
     ----------------------------
 	EXAMPLE  -->
 	const cities = ["Madrid", "Valencia", "Lugo"];
 	console.log(cities.indexOf("Lugo")) --> returns 2, if false returns -1
 12- Find.
     ----------------------------
-	Takes a fn in the parameter, it can't be an arrow fn. Because arrow fn treat this globally.
-	Returns the value of the **1st element** that returns true, THEN IT STOPS!
+	Takes a fn in the parameter, it can't be an arrow fn. Because arrow fn treat "this" globally.
+	Returns the value of the **FIRST element** that returns true, THEN IT STOPS!
 	If false returns undefined
     ----------------------------
 	EXAMPLE 1 -->
@@ -186,7 +186,7 @@
 	}, person);
 	console.log(person.name + " lives in: " + match);
     ----------------------------
-FindIndex.
+13- FindIndex.
     ----------------------------
 	Takes a fn in its parameter & finds the element that returns true
     ----------------------------
