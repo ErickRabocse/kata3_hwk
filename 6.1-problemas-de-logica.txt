@@ -18,31 +18,71 @@ PASO 2: Crear variable que almacene el segundo valor.
 PASO 3: Crear función que sume dos números
 PASO 4: Ejecutar función (opcional)
 
-4. Crear un programa que pueda calcular el perímetro y área de cualquier figura (círculo, triángulo y un rectángulo).
+4. (***** DONE *****)
+Crear un programa que pueda calcular el perímetro y área de cualquier figura (círculo, triángulo y un rectángulo).
 PASO 1: Seleccionar los inputs con los que interactuara el usuario y almacenarlos en variables para utilizarlos en funciones que calculen el area y perímetro.
 PASO 2: Crear funciones que calculen y retornen el perímetro y área de las figuras geométricas.
 PASO 3: Seleccionar los botones o inputs que retornaran el valor, almacenarlos en variables y agregar event listeners para obtener los resultados en el navegador.
 
-5. Calcular la suma de los números qué hay entre 1 y un número que el usuario ingrese por teclado (debe ser mayor o igual a 2).
-6. Realizar un programa que calcule el factorial de un numero.
-(diagrama de flujo y pseudocódigo)
+5. (***** DONE *****)
+Calcular la suma de los números qué hay entre 1 y un número que el usuario ingrese por teclado (debe ser mayor o igual a 2).
 
-7. Sucesión de Fibonacci
-PASO 1:
-PASO 2:
-PASO 3:
+6. (***** DONE *****)
+Realizar un programa que calcule el factorial de un numero. (diagrama de flujo y pseudocódigo)
 
-8. Calculadora de matrices cuadradas (suma, resta y multiplicación).
-PASO 1:
-PASO 2:
-PASO 3:
-
-9. Realizar un programa que te pregunte cada 15 segundos que estás haciendo y si tu respuesta no es “trabajar”, te pida depositar $5 en tu alcancia. El programa debe terminar automáticamente a los 2min y mostrarnos cuánto dinero tenemos ahorrado.
-PASO 1:
-PASO 2:
-PASO 3:
-
-10. Dado un arreglo de nombres buscar cuáles de ellos tienen una letra a en su nombre y cambiarla por una @.
+function factorial(n){
+  if(n === 0 || n === 1){
+    return 1;
+  }
+  return n * factorial(n-1)
+}
+console.log(factorial(3))
 
 
-(codigo JS)
+7. (***** DONE *****)
+Sucesión de Fibonacci
+
+function fibo(n){
+  let arr = [0,1];
+  if(n === 0){
+    return 0
+  }
+  if(n === 1){
+    return arr.join(", ");
+  }else{
+    while(n > 2){
+      let last = arr[arr.length-1];
+      let prevToLast = arr[arr.length-2];
+      let newValue = last + prevToLast;
+      arr.push(newValue);
+      n--;
+    }
+  }
+  return arr.join(", ");
+}
+
+console.log(fibo(9))
+
+
+8. (***** NEED HELP *****)
+Calculadora de matrices cuadradas (suma, resta y multiplicación).
+
+
+9. (***** DONE *****)
+Realizar un programa que te pregunte cada 15 segundos que estás haciendo y si tu respuesta no es “trabajar”, te pida depositar $5 en tu alcancia. El programa debe terminar automáticamente a los 2min y mostrarnos cuánto dinero tenemos ahorrado.
+
+10. (***** DONE *****)
+Dado un arreglo de nombres buscar cuáles de ellos tienen una letra a en su nombre y cambiarla por una @.
+
+const names = ["Ana", "Laura", "Pedro", "Joaquin", "Diana"]
+
+function replaceAll (string, search, replace){
+  search = /a/gi;
+  return string.split(search).join(replace);
+}
+
+const newNames = names.map(name => {
+  return replaceAll(name, "a", "@");
+})
+
+console.log(newNames);
